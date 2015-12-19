@@ -70,7 +70,7 @@ public class Test {
         while (es.hasMoreElements()) {
             System.out.println("Request.params:" + es.nextElement());
         }
-        return JSONObject.fromObject("{id:1, name:'litx'}");
+        return JSONObject.fromObject("{id:1, name:'litx', desc:'发多少'}");
     }
 
     /**
@@ -91,7 +91,7 @@ public class Test {
         while (es.hasMoreElements()) {
             System.out.println("request.params:" + es.nextElement());
         }
-        return JSONObject.fromObject("{id:1, name:'litx'}");
+        return JSONObject.fromObject("{id:1, name:'litx',desc:'发多少'}");
     }
 
 }

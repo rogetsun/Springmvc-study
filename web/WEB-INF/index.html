@@ -16,12 +16,12 @@
 
     angular.module('app', [])
             .controller('ctrl', function ($scope, $http) {
-                $http.post('/user/angular', {id: 1, name: 'litx'}).then(function (res) {
+                $http.post('/user/angular', {id: 1, name: 'litx', desc: '发多少'}).then(function (res) {
                     $scope.ret = JSON.stringify(res);
                 });
             });
     $('#btn').click(function () {
-        $.post('/user/jquery', {id: 1, name: 'litx'}, function (res) {
+        $.post('/user/jquery', {id: 1, name: 'litx', desc: '发多少'}, function (res) {
             $('#ret').html(JSON.stringify(res));
         })
     });
