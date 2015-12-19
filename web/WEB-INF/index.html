@@ -13,6 +13,7 @@
 <script src="assets/public/jquery/jquery-1.11.2.min.js"></script>
 <script src="assets/public/angularjs/angular.min.js"></script>
 <script>
+
     angular.module('app', [])
             .controller('ctrl', function ($scope, $http) {
                 $http.post('/user/angular', {id: 1, name: 'litx'}).then(function (res) {
