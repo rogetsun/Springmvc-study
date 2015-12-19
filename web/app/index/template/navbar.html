@@ -1,0 +1,152 @@
+<div class="header navbar-fixed-top">
+    <div class="logo-container">
+        <span class="logo"><a ui-sref="app">XX考试管理系统</a></span>
+    </div>
+    <!--<div class="search-container">-->
+    <!--<input type="text" class="header-search"/>-->
+    <!--</div>-->
+    <div class="header-menu">
+        <ul>
+            <!--<li ui-sref-active="active"><a href="" ui-sref="company">企业管理</a></li>-->
+            <!--<li ui-sref-active="active" ui-sref="flow">任务管理</li>-->
+            <!--<li>产品管理</li>-->
+            <!--<li ui-sref-active="active"><a href="" ui-sref="user-list">人员管理</a></li>-->
+
+            <li ng-repeat="s in nav_funcs | limitTo:10" ng-click="select_func(s)"
+                ng-class="(nav_active_func_code == s.func_code)?'active':''" style="cursor: pointer;">
+                {{s.func_name}}
+            </li>
+
+            <li><i class="glyphicon glyphicon-user"></i>&nbsp;{{login_user.login_name}}
+                <ul>
+                    <li ng-click="modify_password()">修改密码</li>
+                    <!--<li ng-click="modify_self()">修改个人信息</li>-->
+                    <li class="separator"><i></i></li>
+                    <li ng-click="logout()">退出</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="change_password_dialog">
+    <div class="panel panel-primary" style="margin:-20px;">
+        <div class="panel-heading">[{{user.login_name}}:{{user.login_no}}]密码修改</div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">原密码</label>
+
+                    <div class="col-sm-8">
+                        <input ng-model="old_password" type="text" class="form-control"
+                               placeholder="请输入名称">
+
+                        <p ng-show="valid.old_password" style="font-size: 12px;color:darkred;">
+                            {{valid.old_password}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">新密码</label>
+
+                    <div class="col-sm-8">
+                        <input ng-model="new_password" type="text" class="form-control" placeholder="请输入名称">
+
+                        <p ng-show="valid.new_password" style="font-size: 12px;color:darkred;">
+                            {{valid.new_password}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">重复新密码</label>
+
+                    <div class="col-sm-8">
+                        <input ng-model="new_password_repeat" type="text" class="form-control" placeholder="请输入名称">
+
+                        <p ng-show="valid.new_password_repeat" style="font-size: 12px;color:darkred;">
+                            {{valid.new_password_repeat}}</p>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="panel-footer" style="overflow: hidden;">
+            <button class="btn btn-sm btn-info pull-right" ng-click="change_password()">确定
+            </button>
+            <a class="btn btn-sm btn-default pull-right" ng-click="closeThisDialog()" style="margin-right:5px;">取消</a>
+        </div>
+    </div>
+</script>
+
+
+<!--<nav class="navbar navbar-inverse navbar-static-top">-->
+<!--<div class="container-fluid">-->
+<!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+<!--<div class="navbar-header">-->
+<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
+<!--data-target="#bs-example-navbar-collapse-1" aria-expanded="false">-->
+<!--<span class="sr-only">Toggle navigation</span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--</button>-->
+<!--<a class="navbar-brand" href="#">OA</a>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+
+<!--&lt;!&ndash; 左边功能目录 &ndash;&gt;-->
+<!--<ul class="nav navbar-nav">-->
+
+<!--<li ng-repeat="s in functions.funcTree.children_funcs | limitTo:9"-->
+<!--ng-class="s.children_funcs.length>0?'dropdown':''" ui-sref-active="active">-->
+<!--<a href="" ng-class="s.children_funcs.length>0?'dropdown-toggle':''"-->
+<!--data-toggle="{{s.children_funcs.length>0?'dropdown':''}}">-->
+<!--{{s.func_title}}-->
+<!--<span class="caret" ng-show="s.children_funcs.length>0"></span>-->
+<!--</a>-->
+<!--<ul class="dropdown-menu" ng-if="s.children_funcs.length>0">-->
+<!--<li ng-repeat="ss in s.children_funcs" ui-sref-active="active">-->
+<!--<a href="" ui-sref="{{ss.state.name}}" ng-click="selectFunc(s, ss)">-->
+<!--{{ss.func_title||ss.state.name}}-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</li>-->
+
+<!--&lt;!&ndash;<li><a href="#">Link2</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>&ndash;&gt;-->
+<!--&lt;!&ndash;<ul class="dropdown-menu">&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#">Action</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#">Another action</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#">Something else here</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li role="separator" class="divider"></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#">Separated link</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li role="separator" class="divider"></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#">One more separated link</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;</ul>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+<!--</ul>-->
+
+
+<!--&lt;!&ndash;navbar右部菜单&ndash;&gt;-->
+<!--<ul class="nav navbar-nav navbar-right">-->
+<!--<li><a href="#" ng-click="logout()">注销</a></li>-->
+<!--<li class="dropdown">-->
+<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
+<!--aria-expanded="false">Dropdown <span class="caret"></span></a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<li><a href="#">Action</a></li>-->
+<!--<li><a href="#">Another action</a></li>-->
+<!--<li><a href="#">Something else here</a></li>-->
+<!--<li role="separator" class="divider"></li>-->
+<!--<li><a href="#">Separated link</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+<!--</div>-->
+<!--&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--</nav>-->

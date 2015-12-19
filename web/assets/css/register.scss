@@ -1,0 +1,81 @@
+@import "function";
+
+$color: #269abc;
+$font-color: #666;
+$back-color: #fff;
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $color;
+    //background-color: #666;
+}
+
+.container {
+    padding: 0;
+    .row {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.register-form {
+    @include box-shadow(0, 0, 6px, #444);
+    @include box-sizing-border();
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: $back-color;
+    color: $font-color;
+    legend {
+        margin-top: 50px;
+        color: $font-color;
+        border-bottom-color: $font-color;
+    }
+
+    .form-group input.form-control, .form-group select.form-control, .form-group .form-control-static {
+        background-color: transparent;
+        //color: darken($font-color, 50%);
+        color: darken($color, 10%);
+        padding: 1px;
+        width: 100%;
+        display: block;
+    }
+    .form-group .form-control-static {
+        margin-top: 7px;
+    }
+    .form-group input.form-control {
+        @include border-radius(0);
+        @include box-sizing-border();
+        @include box-shadow(0, 0, 0);
+        border: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: $font-color;
+    }
+    .form-group div .register-tip {
+        position: absolute;
+        top: 6px;
+        left: 110%;
+        color: #d43f3a;
+        white-space: nowrap;
+    }
+
+}
+
+.btn-egg {
+    background-color: transparent;
+    color: $font-color;
+    border-color: $color;
+    outline: none;
+    &:hover {
+        background-color: $color;
+        color: $back-color;
+        border-color: $color;
+    }
+    &:active, &:focus {
+        background-color: lighten($color, 3%);
+        outline: none;
+        @include box-shadow(0, 0, 0);
+    }
+
+}

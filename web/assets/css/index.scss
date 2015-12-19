@@ -1,0 +1,173 @@
+@import "content.css";
+@import "default";
+
+$header-height: 50px;
+$header-background-color: #0a0a0a;
+$header-menu-item-hover: rgba(69, 140, 200, 0.8);
+$header-font-color: #eee;
+a {
+    text-underline: none;
+}
+
+body {
+    padding-top: $header-height;
+    margin: 0;
+    max-height: 100vh;
+    max-width: 100vw;
+
+}
+
+ul {
+    list-style: none;
+}
+
+.uv-hide {
+    opacity: 0;
+    display: none !important;
+}
+
+.uv-show {
+    opacity: 1;
+    display: block !important;
+}
+
+.header {
+    position: fixed;
+    height: $header-height;
+    //background-color: #1687D2;
+    background: $header-background-color;
+    color: $header-font-color;
+    line-height: $header-height;
+    min-width: 1140px;
+    a {
+        &:hover, &:link {
+            text-decoration: none;
+        }
+
+    }
+    .logo-container {
+        display: inline-block;
+        margin-left: 30px;
+        font-size: $header-height / 2;
+        float: left;
+        .logo {
+            &:before {
+                content: '';
+                float: left;
+                background-size: $header-height / 1.2;
+                background-image: url(../images/logox.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                width: $header-height;
+                height: $header-height;
+            }
+        }
+    }
+    .search-container {
+        margin-left: 50px;
+        width: 40%;
+        display: inline-block;
+        float: left;
+        .header-search {
+            background-image: url(../images/29-search.png);
+            background-position: right;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            padding-right: 30px;
+            padding-left: 10px;
+            width: 80%;
+            outline: none;
+            height: $header-height / 2;
+            font-size: $header-height / 3.5;
+            color: #0084D5;
+            &:hover {
+                outline: none;
+            }
+        }
+    }
+
+    .header-menu {
+        float: right;
+        margin-right: 20px;
+        font-size: $header-height / 3.5;
+        ul {
+            margin: 0;
+            padding: 0;
+            li {
+                float: left;
+                padding: 0 20px;
+                cursor: pointer;
+                position: relative;
+                &:active, &.active, &:hover {
+                    background-color: $header-menu-item-hover;
+                }
+                &:hover > ul {
+                    display: block;
+                }
+                & a {
+                    color: $header-font-color;
+                }
+                ul {
+                    display: none;
+                    position: absolute;
+                    right: 0;
+                    top: $header-height;
+                    min-width: 200px;
+                    margin: 0;
+                    padding: 6px 0;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+                    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+                    li {
+                        position: relative;
+
+                        &:first-child {
+                            border-bottom: 0;
+                        }
+                        width: 100%;
+                        text-align: center;
+                        height: auto;
+                        line-height: $header-height / 2;
+                        padding: 3px;
+                        &.separator * {
+                            height: 0.5px;
+                            background-color: rgba(222, 222, 222, 0.2);
+                            width: 100%;
+                            float: left;
+                        }
+                        &.separator:hover {
+                            background-color: transparent;
+                            cursor: default;
+                        }
+
+                        //&:hover {
+                        //    background-color: $header-menu-item-hover;
+                        //}
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

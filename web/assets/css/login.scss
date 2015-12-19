@@ -1,0 +1,168 @@
+@import "function";
+@import "login-font.css";
+
+$font-color: #333;
+//$login-container-back-color: #f0ad4e;
+$login-container-back-color: #fff;
+
+//$login-logo-back-color: #0f0f0f;
+$login-logo-back-color: #269abc;
+
+//$login-info-back-color: #040C25;
+$login-info-back-color: $login-container-back-color;
+
+$login-row-height: 50px;
+$login-row-width: 200px;
+//$login-font-color: #f0ad4e;
+//$login-font-color: #60C0DC;
+$login-font-color: #444;
+$login-row-color: #444;
+$login-row-hover-color: darken($login-row-color, 10%);
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $login-container-back-color;
+    @include box-sizing-border();
+}
+
+.login-container, .register-container {
+
+    @include box-sizing-border();
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: 100;
+    background-color: $login-container-back-color;
+
+    .login-logo {
+        padding: 10% 0 0;
+        @include box-sizing-border();
+        position: relative;
+        height: 40%;
+        @include box-shadow(0, 1px, 6px, #111);
+        background-color: $login-logo-back-color;
+        h1, h2, h3, h5, h4 {
+            position: relative;
+            padding: 0;
+            display: inline;
+            font-family: '微软雅黑', "Andale Mono", "Lucida Console", Monaco, "Courier New", Courier, monospace;
+            font-weight: lighter;
+            color: $font-color;
+        }
+
+        h1, h2 {
+            opacity: 1;
+            font-size: 50px;
+            text-shadow: 0 0 10px $font-color;
+        }
+        h3 {
+            opacity: 0.7;
+            font-size: 35px;
+            text-shadow: 0 0 3px $font-color;
+        }
+        h4 {
+            opacity: 0.4;
+            font-size: 25px;
+        }
+        h5 {
+            opacity: 0.2;
+            font-size: 18px;
+        }
+
+    }
+    .login-info, .register-info {
+        height: 60%;
+        background-color: $login-info-back-color;
+        @include box-sizing-border();
+        padding-top: 5%;
+        .login-row, .register-row {
+            position: relative;
+            width: $login-row-width;
+            height: $login-row-height;
+            margin: auto;
+            color: $login-row-color;
+            font-size: $login-row-height / 4;
+            &.login-user input, &.login-password input{
+                border: none;
+                border-bottom: 1px solid $login-row-color;
+                outline: none;
+                background-color: transparent;
+                width: $login-row-width * 0.8;
+                height: $login-row-height / 3;
+                line-height: $login-row-height / 4;
+                color: $login-font-color;
+                font-size: $login-row-height / 4;
+                margin-left: $login-row-height / 5;
+                padding: 1px;
+                &:hover, &:focus {
+                    border-bottom: 1px solid $login-row-hover-color;
+                }
+            }
+
+            .login-icon {
+                position: relative;
+                top: $login-row-height / 15;
+                color: $login-font-color;
+                font-size: $login-row-height / 3;
+            }
+
+            &:hover .login-icon {
+                color: $login-row-hover-color;
+            }
+
+            label {
+                float: left;
+                text-align: left;
+                width: $login-row-width / 2;
+                margin-left: 5px;
+                display: inline-block;
+                cursor: pointer;
+                white-space: nowrap;
+                input {
+                    background-color: #222;
+                    border: 1px solid #222;
+                }
+            }
+
+            button {
+                outline: none;
+                background-color: transparent;
+                border: 1px solid $login-font-color;
+                width: $login-row-width / 2.5;
+                @include border-radius(3px);
+                cursor: pointer;
+                color: $login-font-color;
+                &:hover {
+                    background-color: $login-font-color;
+                    color: $login-info-back-color;
+                }
+            }
+
+            a {
+                color: $login-row-color;
+            }
+
+        }
+    }
+}
+
+.login-row .login-tip {
+    position: absolute;
+    @include box-sizing-border();
+    background-color: transparent;
+    text-align: center;
+    height: $login-row-height / 4;
+    line-height: $login-row-height / 4;
+    top: $login-row-height / 8;
+    left: $login-row-width + 5;
+    padding: 1px;
+    color: #d9534f;
+    display: none;
+    white-space: nowrap;
+}
+
+

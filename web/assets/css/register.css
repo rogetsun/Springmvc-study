@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #269abc; }
+
+.container {
+  padding: 0; }
+  .container .row {
+    padding: 0;
+    margin: 0; }
+
+.register-form {
+  -webkit-box-shadow: 0 0 6px #444;
+  -moz-box-shadow: 0 0 6px #444;
+  box-shadow: 0 0 6px #444;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #666; }
+  .register-form legend {
+    margin-top: 50px;
+    color: #666;
+    border-bottom-color: #666; }
+  .register-form .form-group input.form-control, .register-form .form-group select.form-control, .register-form .form-group .form-control-static {
+    background-color: transparent;
+    color: #1d7792;
+    padding: 1px;
+    width: 100%;
+    display: block; }
+  .register-form .form-group .form-control-static {
+    margin-top: 7px; }
+  .register-form .form-group input.form-control {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 0 0 #fff;
+    -moz-box-shadow: 0 0 0 #fff;
+    box-shadow: 0 0 0 #fff;
+    border: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #666; }
+  .register-form .form-group div .register-tip {
+    position: absolute;
+    top: 6px;
+    left: 110%;
+    color: #d43f3a;
+    white-space: nowrap; }
+
+.btn-egg {
+  background-color: transparent;
+  color: #666;
+  border-color: #269abc;
+  outline: none; }
+  .btn-egg:hover {
+    background-color: #269abc;
+    color: #fff;
+    border-color: #269abc; }
+  .btn-egg:active, .btn-egg:focus {
+    background-color: #29a4c9;
+    outline: none;
+    -webkit-box-shadow: 0 0 0 #fff;
+    -moz-box-shadow: 0 0 0 #fff;
+    box-shadow: 0 0 0 #fff; }
+
+/*# sourceMappingURL=register.css.map */

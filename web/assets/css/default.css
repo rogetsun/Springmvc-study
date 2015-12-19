@@ -1,0 +1,24 @@
+.uv-input-container input {
+  height: 24px;
+  line-height: 24px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+  .uv-input-container input:focus {
+    border-color: #44aaef;
+    outline: none; }
+
+.table.table-condensed > tbody > tr > td {
+  height: 24px;
+  line-height: 24px; }
+
+.sidebar {
+  font-size: 14px; }
+
+.abc {
+  background: #000; }
+
+/*# sourceMappingURL=default.css.map */

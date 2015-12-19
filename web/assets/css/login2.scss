@@ -1,0 +1,94 @@
+@import "function";
+@import "login-font.css";
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #222222;
+    position: relative;
+    line-height: 100vh;
+}
+
+$login-panel-height: 300px;
+$login-panel-width: 500px;
+$login-panel-back-color: #ccc;
+
+//$login-panel-back-color: #458CC8;
+//$login-panel-back-color: rgba(0, 0, 0, 0.2);
+
+$font-color: #000;
+$login-panel-radius: 20px;
+$login-row-height: $login-panel-height / 6;
+
+.login-panel {
+    @include border-radius($login-panel-radius);
+    @include box-shadow(0, 0, 2px, $login-panel-back-color);
+    @include box-sizing-border();
+    height: $login-panel-height;
+    width: $login-panel-width;
+    background-color: $login-panel-back-color;
+    display: block;
+    position: relative;
+    top: 50%;
+    margin-top: ($login-panel-height / 2) * -1;
+    margin-left: auto;
+    margin-right: auto;
+    padding: $login-panel-height / 12 0;
+    .login-row {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        height: $login-row-height;
+        line-height: $login-row-height;
+        text-align: center;
+        position: relative;
+        margin: $login-row-height / 2 0;
+
+        input {
+            border: none;
+            border-bottom: 1px solid #aaa;
+            outline: none;
+            background-color: transparent;
+            width: $login-panel-width / 1.7;
+            height: $login-row-height / 2;
+            line-height: $login-row-height / 2;
+            color: $font-color;
+            font-size: $login-row-height / 3;
+            margin-left: 40px;
+            &:hover {
+                border-bottom: 1px solid $font-color;
+            }
+        }
+
+        .login-icon {
+            position: absolute;
+            left: ($login-panel-width - ($login-panel-width / 1.7) - 60 ) / 2;
+            top: $login-row-height / 4;
+            font-size: $login-row-height / 2;
+            color: $font-color;
+            z-index: 999;
+        }
+
+        button {
+            display: block;
+            width: $login-panel-width / 1.7;
+            margin: $login-row-height /1.5 auto 0;
+            background-color: transparent;
+            border: 1px solid $font-color;
+            outline: none;
+            color: #111;
+            font-size: $login-row-height / 3;
+            cursor: pointer;
+            height: $login-row-height / 1.5;
+            @include border-radius($login-panel-radius / 3);
+            &:hover {
+                background: $font-color;
+                color: #ccc;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,39 @@
+$input-height: 24px;
+$input-border-radius: 5px;
+$input-border-color: #ccc;
+$input-border-hover-color: #cce0cc;
+$input-border-focus-color: #44aaef;
+
+$td-height: 24px;
+$td-padding-top-bottom: 2px;
+
+@mixin border-radius($radius:6px) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+.uv-input-container input {
+    height: $input-height;
+    line-height: $input-height;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $input-border-color;
+    @include border-radius($input-border-radius);
+    &:focus {
+        border-color: $input-border-focus-color;
+        outline: none;
+    }
+}
+
+
+
+.table.table-condensed > tbody > tr > td {
+    height: $td-height;
+    line-height: $td-height;
+    //padding-top: $td-padding-top-bottom !important;
+}
+
+.sidebar {
+    font-size: 14px;
+}

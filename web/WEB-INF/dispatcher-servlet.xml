@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- scan the package and the sub package -->
+
+    <!-- don't handle the static resource 视图返回静态页面时,不处理-->
+    <mvc:default-servlet-handler/>
+    <!-- if you use annotation you must configure following setting -->
+    <mvc:annotation-driven/>
+    <!--组件扫描包,项目中为注解@Controller包路径-->
+    <context:component-scan base-package="com.xx.router"/>
+
+
+    <!--支持json的返回视图-->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="1"/>
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--默认返回视图时,用的viewResolver-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="contentType" value="text/html"/>
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".html"/>
+    </bean>
+    <!--过滤某些静态资源文件url-->
+    <mvc:resources mapping="/assets/**" location="assets/"/>
+    <mvc:resources mapping="/app/**" location="app/"/>
+    <mvc:resources mapping="/resource/**" location="resource/"/>
+</beans>

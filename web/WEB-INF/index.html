@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/public/bootstrap/css/bootstrap.min.css">
+</head>
+<body ng-app="app" ng-controller="ctrl">
+<button class="btn btn-danger" id="btn">jQuery发送json数据</button>
+<div class="btn btn-primary">angular发送json</div>
+<div id="ret" ng-bind="ret"></div>
+</body>
+<script src="assets/public/jquery/jquery-1.11.2.min.js"></script>
+<script src="assets/public/angularjs/angular.min.js"></script>
+<script>
+    angular.module('app', [])
+            .controller('ctrl', function ($scope, $http) {
+                $http.post('/user/angular', {id: 1, name: 'litx'}).then(function (res) {
+                    $scope.ret = JSON.stringify(res);
+                });
+            });
+    $('#btn').click(function () {
+        $.post('/user/jquery', {id: 1, name: 'litx'}, function (res) {
+            $('#ret').html(JSON.stringify(res));
+        })
+    });
+</script>
+</html>
